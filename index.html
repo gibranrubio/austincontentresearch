@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Street Style Interview</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f5f0;
+      color: #111;
+    }
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 3rem 1.5rem 2rem;
+    }
+    .hero-title {
+      font-size: clamp(2.8rem, 7vw, 4.5rem);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .subline {
+      margin-top: 1.2rem;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #777;
+      text-align: center;
+    }
+    .arrow-link { margin-top: 2.5rem; text-decoration: none; color: inherit; cursor: pointer; }
+    .arrow-wrap { display: flex; flex-direction: column; align-items: center; }
+    .arrow-shaft {
+      width: clamp(32px, 4vw, 48px);
+      height: 40vh;
+      background: #111;
+      animation: arrowPulse 1.6s ease-in-out infinite;
+      transform-origin: top center;
+    }
+    .arrow-head {
+      width: 0; height: 0;
+      border-left: clamp(22px, 3vw, 32px) solid transparent;
+      border-right: clamp(22px, 3vw, 32px) solid transparent;
+      border-top: clamp(32px, 4vw, 44px) solid #111;
+      animation: arrowPulse 1.6s ease-in-out infinite;
+    }
+    @keyframes arrowPulse {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+      100% { transform: translateY(0); }
+    }
+    .hint { margin-top: 1rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.16em; color: #777; }
+    .cta {
+      min-height: 70vh;
+      padding: 4rem 1.5rem;
+      background: #111;
+      color: #f6f5f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .cta h2 { font-size: clamp(1.9rem, 4vw, 2.4rem); margin-bottom: 1rem; }
+    .cta p { max-width: 620px; font-size: 1rem; line-height: 1.7; margin-bottom: 2rem; color: #e0ded5; }
+    .cta-button {
+      display: inline-block;
+      padding: 0.9rem 2.1rem;
+      border-radius: 999px;
+      border: 1px solid #f6f5f0;
+      background: #f6f5f0;
+      color: #111;
+      font-weight: 600;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.8rem;
+    }
+    .cta-button:hover { filter: brightness(0.95); }
+    .cta-meta { margin-top: 1.2rem; font-size: 0.85rem; color: #b0afa6; max-width: 520px; }
+    .cta-meta a { color: #f6f5f0; text-decoration: underline; text-underline-offset: 3px; }
+      @media (max-width: 600px) {
+      .hero {
+        padding: 2.25rem 1.25rem 1.5rem;
+        justify-content: flex-start;
+      }
+      .hero-title {
+        font-size: 2.1rem;
+        letter-spacing: 0.12em;
+      }
+      .arrow-shaft {
+        height: 28vh;
+      }
+      .hint {
+        font-size: 0.8rem;
+        letter-spacing: 0.14em;
+      }
+      .cta {
+        padding: 3rem 1.5rem 3.5rem;
+      }
+      .cta h2 {
+        font-size: 1.6rem;
+      }
+      .cta p {
+        font-size: 0.95rem;
+      }
+      .cta-button {
+        width: 100%;
+        max-width: 320px;
+        text-align: center;
+      }
+      .cta-meta {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-title">street style interviews as a service</div>
+    
+    <a href="#cta" class="arrow-link">
+      <div class="arrow-wrap">
+        <div class="arrow-shaft"></div>
+        <div class="arrow-head"></div>
+      </div>
+    </a>
+    <div class="hint">Scroll or tap the arrow</div>
+  </section>
+
+  <section id="cta" class="cta">
+    <h2>We run the street formula for you</h2>
+    <p>
+      We do street style interviews as a service. Most people are scared to talk to strangers,
+      which is exactly why these conversations grab attention. We walk Austin, ask real people
+      simple questions about what you are launching, and film honest answers. Those moments become
+      sharp, simple clips that build trust and a real community around your brand.
+    </p>
+    <a href="mailto:you@example.com?subject=Street%20Style%20Interview%20Project" class="cta-button">Start a project</a>
+    <div class="cta-meta">
+      Prefer a call or want to see proof first?<br />
+      Email us or check our Instagram, which speaks for itself:
+      <a href="https://instagram.com/yourhandle" target="_blank">@yourhandle</a>
+    </div>
+  </section>
+</body>
+</html>
