@@ -4,21 +4,16 @@
   <meta charset="UTF-8" />
   <title>Austin Content Research</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Austin Content Research helps founders and creators turn Austin into a content lab with research, strategy, and production support." />
+  <meta name="description" content="Austin Content Research is a small studio that treats content like a research project in Austin." />
 
   <style>
     :root {
-      --bg: #f5f3ee;
-      --bg-alt: #ffffff;
-      --text: #121212;
-      --muted: #5f6673;
-      --accent: #ff6b35;
-      --accent-soft: rgba(255,107,53,0.08);
-      --border-subtle: #e0ddd7;
-      --max-width: 1100px;
-      --radius-lg: 18px;
-      --radius-pill: 999px;
-      --shadow-soft: 0 18px 50px rgba(15,23,42,0.12);
+      --bg: #f8f5f0;
+      --text: #111111;
+      --muted: #5b5b5b;
+      --accent: #ff6b3b;
+      --border: #dfdbd2;
+      --max-width: 880px;
     }
 
     * {
@@ -28,10 +23,10 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #faf5ef 0, #f5f3ee 45%, #f0ede7 100%);
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", sans-serif;
+      background: var(--bg);
       color: var(--text);
-      line-height: 1.5;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -51,350 +46,135 @@
       flex-direction: column;
     }
 
-    .container {
+    .wrap {
       width: 100%;
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 24px 18px 40px;
     }
 
-    /* Nav */
+    /* Header and nav */
 
     header {
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
       position: sticky;
       top: 0;
-      z-index: 20;
-      backdrop-filter: blur(18px);
-      background: rgba(245,243,238,0.88);
-      border-bottom: 1px solid rgba(224,221,215,0.8);
+      z-index: 10;
     }
 
-    .nav {
+    .header-inner {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 14px 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 0;
     }
 
     .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
       font-size: 14px;
       font-weight: 600;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
-    .logo-mark {
-      width: 26px;
-      height: 26px;
-      border-radius: 30% 70% 60% 40%;
-      background: radial-gradient(circle at 30% 20%, #ffe3d6 0, #ff6b35 50%, #80301a 100%);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
-
     .logo span {
-      white-space: nowrap;
+      padding: 4px 8px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 400;
+      margin-left: 6px;
+      color: var(--muted);
     }
 
-    .nav-links {
+    nav {
       display: flex;
-      align-items: center;
-      gap: 26px;
-      font-size: 14px;
+      gap: 18px;
+      font-size: 13px;
     }
 
-    .nav-links a {
-      opacity: 0.75;
+    nav a {
       position: relative;
-      padding-bottom: 3px;
+      padding-bottom: 2px;
+      color: var(--muted);
     }
 
-    .nav-links a:hover,
-    .nav-links a.active {
-      opacity: 1;
+    nav a.active {
+      color: var(--text);
     }
 
-    .nav-links a::after {
+    nav a.active::after {
       content: "";
       position: absolute;
       left: 0;
       bottom: 0;
-      width: 0;
-      height: 1.5px;
-      background: var(--accent);
-      transition: width 0.18s ease;
-    }
-
-    .nav-links a:hover::after,
-    .nav-links a.active::after {
       width: 100%;
+      height: 1px;
+      background: var(--accent);
     }
 
-    .nav-cta {
-      padding: 7px 16px;
-      font-size: 13px;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(0,0,0,0.08);
-      background: #111827;
-      color: white;
-      box-shadow: 0 10px 30px rgba(15,23,42,0.35);
-    }
-
-    .nav-cta:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 14px 40px rgba(15,23,42,0.45);
-    }
-
-    /* Mobile nav */
-
-    .nav-toggle {
-      display: none;
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      padding: 6px;
-      border-radius: 999px;
-      border: 1px solid rgba(15,23,42,0.08);
-    }
-
-    .nav-toggle-line {
-      width: 18px;
-      height: 1.5px;
-      background: #111827;
-      border-radius: 999px;
-      margin: 3px 0;
-    }
-
-    @media (max-width: 720px) {
-      .nav-links {
-        position: absolute;
-        right: 20px;
-        top: 54px;
+    @media (max-width: 640px) {
+      .header-inner {
         flex-direction: column;
         align-items: flex-start;
-        padding: 12px 14px;
-        background: rgba(245,243,238,0.98);
-        border-radius: 16px;
-        border: 1px solid rgba(148,163,184,0.35);
-        box-shadow: 0 18px 40px rgba(15,23,42,0.25);
-        min-width: 180px;
-        transform-origin: top right;
-        transform: scale(0.98);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.18s ease, transform 0.18s ease;
+        gap: 8px;
       }
 
-      .nav-links.open {
-        opacity: 1;
-        pointer-events: auto;
-        transform: scale(1);
-      }
-
-      .nav-cta {
-        width: 100%;
-        text-align: center;
-        justify-content: center;
-      }
-
-      .nav-toggle {
-        display: inline-flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+      nav {
+        gap: 12px;
       }
     }
 
-    /* Hero */
+    /* Sections */
 
     main {
       flex: 1;
     }
 
-    .hero {
-      padding: 60px 0 80px;
+    section {
+      padding: 40px 0;
+      border-bottom: 1px solid var(--border);
     }
 
-    @media (max-width: 720px) {
-      .hero {
-        padding: 34px 0 52px;
-      }
+    section:last-of-type {
+      border-bottom: none;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.6fr);
-      gap: 40px;
-      align-items: center;
+    .intro-title {
+      font-size: 38px;
+      line-height: 1.15;
+      margin-bottom: 18px;
     }
 
-    @media (max-width: 900px) {
-      .hero-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 4px 10px;
-      border-radius: var(--radius-pill);
-      background: rgba(255,255,255,0.8);
-      border: 1px solid rgba(224,221,215,0.9);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-
-    .hero-title {
-      font-size: clamp(36px, 4vw, 46px);
-      line-height: 1.08;
-      letter-spacing: -0.03em;
-      margin-bottom: 16px;
-    }
-
-    .hero-highlight {
-      display: inline-flex;
-      box-shadow: 0 18px 40px rgba(15,23,42,0.18);
-      border-radius: 16px;
-      margin-bottom: 4px;
-    }
-
-    .hero-highlight-inner {
-      padding: 4px 10px;
-      background: black;
-      color: white;
-      border-radius: 16px;
-      font-size: 13px;
-      font-weight: 500;
-    }
-
-    .hero-copy {
+    .intro-sub {
       font-size: 16px;
       color: var(--muted);
-      max-width: 450px;
-      margin-bottom: 26px;
+      max-width: 540px;
     }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-      margin-bottom: 22px;
-    }
-
-    .btn-primary {
-      border: none;
-      cursor: pointer;
-      padding: 11px 22px;
-      font-size: 14px;
-      border-radius: var(--radius-pill);
-      background: var(--accent);
-      color: white;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 16px 40px rgba(220,75,30,0.45);
-    }
-
-    .btn-primary span {
-      font-size: 18px;
-      transform: translateY(1px);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 20px 46px rgba(220,75,30,0.55);
-    }
-
-    .btn-ghost {
-      border-radius: var(--radius-pill);
-      padding: 10px 18px;
-      font-size: 14px;
-      border: 1px solid rgba(31,41,55,0.15);
-      background: rgba(255,255,255,0.7);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      cursor: pointer;
-    }
-
-    .btn-ghost span {
-      font-size: 18px;
-      transform: translateY(1px);
-    }
-
-    .hero-meta {
+    .intro-tag {
+      display: inline-block;
       font-size: 12px;
-      color: var(--muted);
-      opacity: 0.9;
-    }
-
-    .hero-meta strong {
-      color: #111827;
-    }
-
-    /* Hero illustration */
-
-    .hero-card {
-      background: linear-gradient(145deg, #ffffff, #f7f2ea);
-      border-radius: 32px;
-      padding: 18px 18px 18px;
-      border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
-      min-height: 260px;
-    }
-
-    .hero-label {
-      font-size: 11px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
       color: var(--muted);
       margin-bottom: 10px;
+    }
+
+    .hero-illustration {
+      margin: 36px 0 6px;
+      width: 100%;
+      height: 220px;
+      border-radius: 18px;
+      border: 1px dashed var(--border);
       display: flex;
-      justify-content: space-between;
       align-items: center;
-    }
-
-    .hero-tag {
-      padding: 3px 9px;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(148,163,184,0.4);
-      font-size: 11px;
-      color: #4b5563;
-      background: rgba(255,255,255,0.9);
-    }
-
-    .hero-blob {
-      position: absolute;
-      inset: 60px 60px 0 0;
-      background: radial-gradient(circle at 10% 0, #ffe9da 0, #ffb38a 45%, #ff6b35 90%);
-      border-radius: 55% 45% 65% 35%;
-      opacity: 0.25;
-      filter: blur(10px);
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.6fr);
-      gap: 10px;
-      align-items: center;
-    }
-
-    @media (max-width: 480px) {
-      .hero-inner {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      justify-content: center;
+      font-size: 13px;
+      color: var(--muted);
     }
 
     .hero-note {
@@ -402,648 +182,347 @@
       color: var(--muted);
     }
 
-    .hero-pill {
-      margin-top: 10px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      font-size: 11px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
+    /* Portfolio */
 
-    .hero-pill-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #10b981;
-    }
-
-    .hero-chart {
-      border-radius: 20px;
-      background: rgba(15,23,42,0.96);
-      color: white;
-      padding: 14px 14px 10px;
-      font-size: 11px;
-    }
-
-    .hero-chart-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .section-title {
+      font-size: 26px;
       margin-bottom: 10px;
     }
 
-    .hero-chart-badges {
-      display: flex;
-      gap: 6px;
-      align-items: center;
-    }
-
-    .badge {
-      padding: 3px 7px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.6);
-      font-size: 10px;
-      color: #e5e7eb;
-    }
-
-    .hero-chart-title {
-      font-size: 11px;
-      font-weight: 500;
-    }
-
-    .hero-chart-grid {
-      display: flex;
-      gap: 5px;
-      align-items: flex-end;
-      height: 120px;
-      margin-bottom: 8px;
-    }
-
-    .hero-bar {
-      flex: 1;
-      border-radius: 999px;
-      background: linear-gradient(to top, #fbbf24, #f97316);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-bar:nth-child(2) {
-      height: 55%;
-      background: linear-gradient(to top, #22c55e, #4ade80);
-    }
-
-    .hero-bar:nth-child(3) {
-      height: 90%;
-      background: linear-gradient(to top, #a855f7, #e879f9);
-    }
-
-    .hero-bar:nth-child(4) {
-      height: 70%;
-      background: linear-gradient(to top, #3b82f6, #60a5fa);
-    }
-
-    .hero-bar:nth-child(5) {
-      height: 40%;
-      background: linear-gradient(to top, #e11d48, #fb7185);
-    }
-
-    .hero-bar:nth-child(1) {
-      height: 20%;
-      background: linear-gradient(to top, #9ca3af, #d1d5db);
-    }
-
-    .hero-bar-labels {
-      display: flex;
-      justify-content: space-between;
-      font-size: 9px;
-      color: #9ca3af;
-    }
-
-    /* Section wrappers */
-
-    section {
-      padding: 40px 0 60px;
-      border-top: 1px solid rgba(224,221,215,0.9);
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .section-title {
-      font-size: 18px;
-      letter-spacing: 0.12em;
+    .section-kicker {
+      font-size: 12px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #6b7280;
+      color: var(--muted);
+      margin-bottom: 4px;
     }
 
-    .section-subtitle {
+    .section-intro {
       font-size: 14px;
       color: var(--muted);
-      max-width: 420px;
+      max-width: 520px;
+      margin-bottom: 22px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
     }
 
     @media (max-width: 720px) {
-      section {
-        padding: 32px 0 48px;
-      }
-      .section-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-
-    /* Portfolio */
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    @media (max-width: 900px) {
-      .portfolio-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      .portfolio-grid {
+      .projects {
         grid-template-columns: minmax(0, 1fr);
       }
     }
 
-    .project-card {
-      background: var(--bg-alt);
-      border-radius: 18px;
-      border: 1px solid rgba(209,213,219,0.8);
+    .project {
       padding: 14px 14px 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
-      cursor: default;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #fff;
     }
 
-    .project-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(15,23,42,0.16);
-      border-color: rgba(148,163,184,0.9);
-    }
-
-    .project-tag {
+    .project-type {
       font-size: 11px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #9ca3af;
+      color: var(--muted);
+      margin-bottom: 6px;
     }
 
     .project-title {
-      font-size: 15px;
-      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 6px;
     }
 
-    .project-desc {
+    .project-text {
       font-size: 13px;
       color: var(--muted);
+      margin-bottom: 6px;
     }
 
     .project-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 4px;
-      font-size: 11px;
-      color: #6b7280;
-    }
-
-    .pill {
-      padding: 3px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(209,213,219,0.9);
-      font-size: 11px;
-      background: rgba(249,250,251,0.9);
+      font-size: 12px;
+      color: #7a7a7a;
     }
 
     /* Contact */
 
-    .contact-layout {
+    .contact-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 2fr);
-      gap: 30px;
-      align-items: flex-start;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.4fr);
+      gap: 26px;
     }
 
-    @media (max-width: 880px) {
-      .contact-layout {
+    @media (max-width: 720px) {
+      .contact-grid {
         grid-template-columns: minmax(0, 1fr);
       }
     }
 
-    .contact-note {
+    .contact-list {
       font-size: 14px;
       color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .contact-list {
       list-style: none;
-      font-size: 13px;
-      color: #4b5563;
       display: grid;
-      gap: 6px;
-      margin-bottom: 16px;
+      gap: 8px;
+      margin: 16px 0 20px;
     }
 
     .contact-list strong {
-      color: #111827;
+      color: var(--text);
     }
 
-    .contact-form {
-      background: var(--bg-alt);
-      border-radius: 20px;
-      padding: 18px 18px 20px;
-      border: 1px solid rgba(209,213,219,0.9);
-      box-shadow: 0 12px 32px rgba(148,163,184,0.25);
+    .contact-email {
+      font-size: 14px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
-    .form-row {
-      margin-bottom: 12px;
+    form {
+      padding: 16px 16px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #fff;
     }
 
-    label {
+    .field {
+      margin-bottom: 10px;
+    }
+
+    .field label {
       display: block;
       font-size: 12px;
-      margin-bottom: 4px;
-      color: #374151;
+      margin-bottom: 3px;
     }
 
-    input,
-    textarea {
+    .field input,
+    .field textarea {
       width: 100%;
-      border-radius: 12px;
-      border: 1px solid rgba(209,213,219,0.9);
-      padding: 9px 11px;
-      font-size: 13px;
       font-family: inherit;
+      font-size: 13px;
+      padding: 8px 9px;
+      border-radius: 8px;
+      border: 1px solid #d4d4d4;
       outline: none;
+      background: #fafafa;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--accent);
+      background: #fff;
+    }
+
+    .field textarea {
       resize: vertical;
-      background: #f9fafb;
+      min-height: 90px;
     }
 
-    input:focus,
-    textarea:focus {
-      border-color: #4f46e5;
-      background: #ffffff;
-      box-shadow: 0 0 0 1px rgba(79,70,229,0.25);
-    }
-
-    .form-row-inline {
-      display: flex;
-      gap: 10px;
-    }
-
-    @media (max-width: 540px) {
-      .form-row-inline {
-        flex-direction: column;
-      }
-    }
-
-    .form-help {
+    .help {
       font-size: 11px;
-      color: #9ca3af;
+      color: #999;
       margin-top: 2px;
     }
 
-    .form-submit {
+    .submit-row {
       margin-top: 10px;
-      display: flex;
-      justify-content: flex-end;
+      text-align: right;
     }
 
-    .btn-submit {
+    .btn {
       border: none;
       cursor: pointer;
-      padding: 9px 18px;
+      padding: 8px 18px;
       font-size: 13px;
-      border-radius: var(--radius-pill);
-      background: #111827;
-      color: white;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .btn-submit span {
-      font-size: 16px;
-      transform: translateY(1px);
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
     }
 
     /* Footer */
 
     footer {
-      border-top: 1px solid rgba(209,213,219,0.9);
-      padding: 14px 0 20px;
+      border-top: 1px solid var(--border);
+      padding: 14px 18px 20px;
       font-size: 11px;
-      color: #9ca3af;
+      color: var(--muted);
     }
 
-    .footer-row {
+    .footer-inner {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 10px;
     }
 
     @media (max-width: 640px) {
-      .footer-row {
+      .footer-inner {
         flex-direction: column;
         align-items: flex-start;
       }
     }
 
-    .footer-links {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
     .footer-links a {
       text-decoration: underline;
-      text-decoration-style: dotted;
       text-underline-offset: 3px;
+      margin-left: 10px;
     }
   </style>
 </head>
 <body>
   <div class="page">
     <header>
-      <div class="container">
-        <nav class="nav">
-          <a href="#top" class="logo">
-            <div class="logo-mark" aria-hidden="true"></div>
-            <span>Austin Content Research</span>
-          </a>
-
-          <button class="nav-toggle" aria-label="Toggle navigation">
-            <span class="nav-toggle-line"></span>
-            <span class="nav-toggle-line"></span>
-          </button>
-
-          <div class="nav-links" id="navLinks">
-            <a href="#top" class="active">Home</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#contact">Contact</a>
-            <a href="#contact" class="nav-cta">Start a project</a>
-          </div>
+      <div class="header-inner">
+        <div class="logo">
+          Austin Content Research
+          <span>Austin, TX</span>
+        </div>
+        <nav>
+          <a href="#home" class="active">Home</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#contact">Contact</a>
         </nav>
       </div>
     </header>
 
-    <main id="top">
-      <!-- Hero -->
-      <section class="hero">
-        <div class="container">
-          <div class="hero-grid">
-            <div>
-              <div class="hero-eyebrow">
-                <span>Studio</span>
-                <span>Research first content for Austin</span>
-              </div>
+    <main>
+      <!-- HOME -->
+      <section id="home">
+        <div class="wrap">
+          <div class="intro-tag">Studio notes</div>
+          <h1 class="intro-title">
+            A tiny research studio that treats content in Austin like a science project.
+          </h1>
+          <p class="intro-sub">
+            I walk, run, sit, and talk my way through Austin and turn what I see into content systems
+            for founders and brands who want something a little more human than another funnel screenshot.
+          </p>
 
-              <div class="hero-highlight">
-                <div class="hero-highlight-inner">
-                  Founder operated content lab in Austin
-                </div>
-              </div>
-
-              <h1 class="hero-title">
-                We study what actually works in Austin, then design content that feels like the city.
-              </h1>
-
-              <p class="hero-copy">
-                Austin Content Research helps founders, operators, and local brands turn Austin into a content lab. Less guessing, more field tested stories that build a real community.
-              </p>
-
-              <div class="hero-actions">
-                <button class="btn-primary" data-scroll="#contact">
-                  <span>✍️</span>
-                  <span>Book a research call</span>
-                </button>
-
-                <button class="btn-ghost" data-scroll="#portfolio">
-                  <span>↓</span>
-                  <span>View work in Austin</span>
-                </button>
-              </div>
-
-              <p class="hero-meta">
-                <strong>Scope:</strong> content research, interview series, street style projects, social strategy.
-              </p>
-            </div>
-
-            <!-- Hero visual -->
-            <div>
-              <div class="hero-card">
-                <div class="hero-label">
-                  <span>Sample study board</span>
-                  <span class="hero-tag">Austin feed audit</span>
-                </div>
-                <div class="hero-blob"></div>
-
-                <div class="hero-inner">
-                  <div>
-                    <p class="hero-note">
-                      We treat your channels like a small research project. That means real interviews, street level observations, and a plan built around what people actually stop for.
-                    </p>
-                    <div class="hero-pill">
-                      <span class="hero-pill-dot"></span>
-                      <span>Data from Austin feeds, runs, events, and street talks</span>
-                    </div>
-                  </div>
-
-                  <div class="hero-chart" aria-hidden="true">
-                    <div class="hero-chart-header">
-                      <div>
-                        <div class="hero-chart-title">What Austin scrolls past</div>
-                        <div style="font-size:10px; color:#9ca3af;">Sample view of content performance</div>
-                      </div>
-                      <div class="hero-chart-badges">
-                        <span class="badge">Saves</span>
-                        <span class="badge">Replies</span>
-                      </div>
-                    </div>
-
-                    <div class="hero-chart-grid">
-                      <div class="hero-bar"></div>
-                      <div class="hero-bar"></div>
-                      <div class="hero-bar"></div>
-                      <div class="hero-bar"></div>
-                      <div class="hero-bar"></div>
-                    </div>
-
-                    <div class="hero-bar-labels">
-                      <span>Stock quotes</span>
-                      <span>Generic tips</span>
-                      <span>Austin walks</span>
-                      <span>Founder stories</span>
-                      <span>Giveaways</span>
-                    </div>
-                  </div>
-                </div> 
-              </div>
-            </div>
+          <div class="hero-illustration">
+            <span>Illustration or weird Austin drawing lives here. For now it is imagination only.</span>
           </div>
+          <p class="hero-note">
+            No big agency. No massive team. Just one person taking notes in this city and building formats
+            that actually match the people who live here.
+          </p>
         </div>
       </section>
 
-      <!-- Portfolio -->
+      <!-- PORTFOLIO -->
       <section id="portfolio">
-        <div class="container">
-          <div class="section-header">
-            <div>
-              <h2 class="section-title">Portfolio</h2>
-            </div>
-            <p class="section-subtitle">
-              Selected experiments and prototypes. Some are live, some are internal research projects that shape how we work with clients in Austin.
-            </p>
-          </div>
+        <div class="wrap">
+          <div class="section-kicker">Portfolio</div>
+          <h2 class="section-title">Some experiments on the Austin timeline</h2>
+          <p class="section-intro">
+            Most of my work looks simple on the surface. Underneath is a mix of interviews, field notes,
+            and quiet observation about what people stop for, reply to, and share with a friend.
+          </p>
 
-          <div class="portfolio-grid">
-            <article class="project-card">
-              <div class="project-tag">Street style series</div>
-              <h3 class="project-title">Tiny Friendships: Austin sidewalk interviews</h3>
-              <p class="project-desc">
-                Weekly street style style interviews with strangers in Austin, focused on how adults build real friendship and community in the city.
+          <div class="projects">
+            <article class="project">
+              <div class="project-type">Street interviews</div>
+              <h3 class="project-title">Tiny Friendships on the sidewalk</h3>
+              <p class="project-text">
+                A weekly experiment where I stop strangers in Austin and ask about friendship, careers,
+                and how they actually build a life here. Short clips, longer cuts, real people.
               </p>
-              <div class="project-meta">
-                <span class="pill">Format: short form + YouTube</span>
-                <span>Concept testing</span>
-              </div>
+              <div class="project-meta">Format: short form plus YouTube. Focus: real community, not fake hype.</div>
             </article>
 
-            <article class="project-card">
-              <div class="project-tag">Content lab</div>
-              <h3 class="project-title">Waymo date experiment</h3>
-              <p class="project-desc">
-                A dating experiment documented on Reels and TikTok, using Austin Waymo rides as the running joke and hook. Built to test curiosity and shareability.
+            <article class="project">
+              <div class="project-type">Run and talk</div>
+              <h3 class="project-title">Coffee after the run</h3>
+              <p class="project-text">
+                I join people on their run, ask uncomfortable questions at a conversational pace, then finish
+                with coffee and a quick interview. Part therapy, part research about what matters.
               </p>
-              <div class="project-meta">
-                <span class="pill">Goal: virality test</span>
-                <span>Script and story</span>
-              </div>
+              <div class="project-meta">Format: 3 to 6 minute cuts. Location: Austin trails and coffee shops.</div>
             </article>
 
-            <article class="project-card">
-              <div class="project-tag">Interview show</div>
-              <h3 class="project-title">Tiny Friendships: The Series</h3>
-              <p class="project-desc">
-                Long form interview series with Austin founders and creatives. Diary of a CEO style, but centered on community, friendship, and how to live here on purpose.
+            <article class="project">
+              <div class="project-type">Content audit</div>
+              <h3 class="project-title">Austin feed research file</h3>
+              <p class="project-text">
+                A slow file of screenshots, notes, and patterns about what works on Austin social feeds.
+                Saved posts, common hooks, phrases that are overused, and the rare ones that still feel alive.
               </p>
-              <div class="project-meta">
-                <span class="pill">Format: long form</span>
-                <span>Ongoing</span>
-              </div>
+              <div class="project-meta">Output: pattern library and content ideas for clients.</div>
             </article>
 
-            <article class="project-card">
-              <div class="project-tag">Research</div>
-              <h3 class="project-title">Austin feed patterns report</h3>
-              <p class="project-desc">
-                A running internal study of what types of posts from Austin accounts lead to real replies, DMs, and in person action instead of empty likes.
+            <article class="project">
+              <div class="project-type">Show design</div>
+              <h3 class="project-title">The founder with a neighbor energy</h3>
+              <p class="project-text">
+                A show format for local founders who want to sound like a neighbor, not a press release.
+                Structure, questions, and segment ideas included, tailored to their Austin niche.
               </p>
-              <div class="project-meta">
-                <span class="pill">Scope: qualitative research</span>
-                <span>Internal</span>
-              </div>
-            </article>
-
-            <article class="project-card">
-              <div class="project-tag">Brand lab</div>
-              <h3 class="project-title">Letters to my Rich Self in Austin</h3>
-              <p class="project-desc">
-                Hybrid of snail mail letters and content series that follows first gen founders and operators building wealth while building community here.
-              </p>
-              <div class="project-meta">
-                <span class="pill">Format: print plus digital</span>
-                <span>Concept phase</span>
-              </div>
-            </article>
-
-            <article class="project-card">
-              <div class="project-tag">Client slot</div>
-              <h3 class="project-title">Your Austin content lab</h3>
-              <p class="project-desc">
-                One or two partner brands at a time. We plug your company into the research and experiments, then build a content system that fits your voice.
-              </p>
-              <div class="project-meta">
-                <span class="pill">Availability: limited</span>
-                <span>Now booking</span>
-              </div>
+              <div class="project-meta">Deliverable: show skeleton, pilot script, episode map.</div>
             </article>
           </div>
         </div>
       </section>
 
-      <!-- Contact -->
+      <!-- CONTACT -->
       <section id="contact">
-        <div class="container">
-          <div class="section-header">
+        <div class="wrap">
+          <div class="section-kicker">Contact</div>
+          <h2 class="section-title">Tell me what you want content to do</h2>
+          <div class="contact-grid">
             <div>
-              <h2 class="section-title">Contact</h2>
-            </div>
-            <p class="section-subtitle">
-              Tell me about your brand, your Austin story, and what you want content to do for you. I will reply with a simple plan and a clear scope.
-            </p>
-          </div>
-
-          <div class="contact-layout">
-            <div>
-              <p class="contact-note">
-                Based in East Austin, working with founders, operators, and teams who actually live here or want to build roots in the city.
+              <p class="section-intro">
+                You might want more leads, a tighter community, or just a content plan that does not
+                make your skin crawl. Tell me what you are building and where Austin fits into it.
               </p>
 
               <ul class="contact-list">
-                <li><strong>Good fits:</strong> founders, studio owners, coffee shops, gyms, local media, and B2B operators who want a more human presence.</li>
-                <li><strong>Projects:</strong> show development, social series, research and strategy, interview formats, launch campaigns.</li>
-                <li><strong>Style:</strong> honest, curiosity led, experiment heavy, with financial advisor energy for how content supports the business.</li>
+                <li><strong>Good fits:</strong> founders, operators, studios, small teams who care more about depth than follower counts.</li>
+                <li><strong>Typical work:</strong> show concepts, interview formats, research and strategy, social series built around real people.</li>
+                <li><strong>Location:</strong> Based in East Austin, happy to meet in person or work quietly in the background.</li>
               </ul>
 
-              <p class="contact-note">
-                Prefer to email directly  
+              <p>
+                If you want to skip the form, send an email:
                 <br />
-                <a href="mailto:hello@austincontentresearch.com" style="text-decoration: underline; text-underline-offset: 3px;">
+                <a href="mailto:hello@austincontentresearch.com" class="contact-email">
                   hello@austincontentresearch.com
                 </a>
               </p>
             </div>
 
-            <form class="contact-form" action="mailto:hello@austincontentresearch.com" method="post" enctype="text/plain">
-              <div class="form-row-inline">
-                <div class="form-row">
-                  <label for="name">Name</label>
-                  <input type="text" id="name" name="name" required />
-                </div>
-                <div class="form-row">
-                  <label for="company">Company</label>
-                  <input type="text" id="company" name="company" />
-                </div>
+            <form action="mailto:hello@austincontentresearch.com" method="post" enctype="text/plain">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" required />
               </div>
 
-              <div class="form-row-inline">
-                <div class="form-row">
-                  <label for="email">Email</label>
-                  <input type="email" id="email" name="email" required />
-                </div>
-                <div class="form-row">
-                  <label for="role">Role</label>
-                  <input type="text" id="role" name="role" placeholder="Founder, operator, etc." />
-                </div>
+              <div class="field">
+                <label for="brand">Brand or project</label>
+                <input id="brand" name="brand" type="text" />
               </div>
 
-              <div class="form-row">
-                <label for="project">What are you trying to solve with content</label>
-                <textarea id="project" name="project" rows="4" placeholder="Tell me about your brand and what you want content to do for you." required></textarea>
-                <p class="form-help">Short and honest is perfect.</p>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required />
               </div>
 
-              <div class="form-row">
-                <label for="budget">Rough monthly budget range</label>
-                <input type="text" id="budget" name="budget" placeholder="Example: 2k to 5k per month" />
+              <div class="field">
+                <label for="message">What are you trying to figure out</label>
+                <textarea id="message" name="message" required placeholder="Tell me the messy version. I will help organize it."></textarea>
+                <div class="help">A paragraph is enough. Bullet points are welcome.</div>
               </div>
 
-              <div class="form-submit">
-                <button class="btn-submit" type="submit">
-                  <span>↗</span>
-                  <span>Send note</span>
-                </button>
+              <div class="field">
+                <label for="budget">Monthly budget range (optional)</label>
+                <input id="budget" name="budget" type="text" placeholder="Example: 2k to 5k per month" />
+              </div>
+
+              <div class="submit-row">
+                <button class="btn" type="submit">Send note</button>
               </div>
             </form>
           </div>
@@ -1052,66 +531,43 @@
     </main>
 
     <footer>
-      <div class="container">
-        <div class="footer-row">
-          <div>
-            Austin Content Research  
-            <span style="opacity:0.7;">Based in Austin, Texas</span>
-          </div>
-          <div class="footer-links">
-            <a href="mailto:hello@austincontentresearch.com">Email</a>
-            <a href="#top">Back to top</a>
-          </div>
+      <div class="footer-inner">
+        <div>
+          © <span id="year"></span> Austin Content Research  
+          · Tiny studio. Real city.
+        </div>
+        <div class="footer-links">
+          <a href="#home">Top</a>
+          <a href="mailto:hello@austincontentresearch.com">Email</a>
         </div>
       </div>
     </footer>
   </div>
 
   <script>
-    // Mobile nav toggle
-    const navToggle = document.querySelector(".nav-toggle");
-    const navLinks = document.getElementById("navLinks");
+    // Active nav state and year
+    const links = document.querySelectorAll("header nav a");
+    const sections = [...document.querySelectorAll("main section")];
 
-    if (navToggle && navLinks) {
-      navToggle.addEventListener("click", function () {
-        navLinks.classList.toggle("open");
+    function updateActiveNav() {
+      let current = sections[0].id;
+      const fromTop = window.scrollY + 80;
+
+      sections.forEach(sec => {
+        if (sec.offsetTop <= fromTop) {
+          current = sec.id;
+        }
+      });
+
+      links.forEach(link => {
+        link.classList.toggle("active", link.getAttribute("href") === "#" + current);
       });
     }
 
-    // Smooth scroll for internal links and buttons with data-scroll
-    function smoothScrollTo(target) {
-      const el = document.querySelector(target);
-      if (!el) return;
-      const headerOffset = 70;
-      const rect = el.getBoundingClientRect();
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const top = rect.top + scrollTop - headerOffset;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
+    window.addEventListener("scroll", updateActiveNav);
+    window.addEventListener("load", updateActiveNav);
 
-    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
-      link.addEventListener("click", function (e) {
-        const href = this.getAttribute("href");
-        if (href.length > 1) {
-          e.preventDefault();
-          smoothScrollTo(href);
-          navLinks.classList.remove("open");
-          document.querySelectorAll(".nav-links a").forEach(function (l) {
-            l.classList.toggle("active", l === link);
-          });
-        }
-      });
-    });
-
-    document.querySelectorAll("[data-scroll]").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        const target = btn.getAttribute("data-scroll");
-        if (target) {
-          smoothScrollTo(target);
-        }
-      });
-    });
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
-
